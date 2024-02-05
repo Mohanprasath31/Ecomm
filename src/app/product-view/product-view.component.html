@@ -1,0 +1,21 @@
+<div class="container-fluid">
+<div class="row">
+    <div class="col-sm-3 col-md-6 col-lg-3"*ngFor="let i of datas?.products">
+        <div class="product-item">
+           <div class="product-detail">
+            <img routerLink="product-detail/{{i.id}}" src="{{i.thumbnail}}" alt="">
+            <h3 class="name-head">{{i.title}}</h3>
+            <hr>
+            <div class="product-price">
+                <h4>price:${{i.price}}</h4>
+            </div>
+            <div class="product-button">
+                <button class="btn btn-success" routerLink="product-detail/{{i.id}}">View detail</button>
+                <button (click)="addtocart(i)" class="btn btn-dark"><span><fa-icon [icon]="cart"></fa-icon></span>Add to cart</button>
+                <button (click)="removeItem(i)" class="btn btn-danger"><span><fa-icon [icon]="rcart"></fa-icon></span>Remove from Cart</button>
+            </div>
+           </div>
+    </div>
+    </div>
+</div>
+</div>

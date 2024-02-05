@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row product-details">
+    <div class="col-sm-12 col-md-5">
+    <img  class="product-img" src="{{productdata?.images[0]}}" alt="">
+    </div>
+    <div class="col-sm-12 col-md-7" id="card">
+        <div class="details">
+            <h1>{{productdata?.title}}</h1>
+            <h5>Price:${{productdata?.price}}</h5>
+            <h5>Category:{{productdata?.category}}</h5>
+            <h5 id="rate">Rating:<span>{{productdata?.rating}}/5</span></h5>
+            <h5>Stocks:{{productdata?.stock}} left</h5>
+            <h5>Discount:<span> {{(productdata?.discountPercentage)}}% off</span></h5>
+            <button class="btn btn-info">Buy Now</button>
+            <button (click)="addtocart(productdata)" *ngIf="showadd" class="btn btn-dark"><span><fa-icon [icon]="cart"></fa-icon></span>Add to Cart</button>
+            <button (click)="removefromcart(productdata)" *ngIf="showremove" class="btn btn-danger"><span><fa-icon [icon]="rcart"></fa-icon></span>Remove to Cart</button>
+        </div>
+    </div>
+    </div>
+</div>
+<div class=" container des"><h3>Description:{{productdata?.description}}</h3></div>

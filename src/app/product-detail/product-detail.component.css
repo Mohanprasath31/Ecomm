@@ -1,0 +1,38 @@
+.product-details{
+    margin-top: 80px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 8px 0 rgba(43, 228, 181, 0.2),0 6px 20px 0 rgba(0, 0,0, 0.19);
+}
+.product-details .product-img{
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+}
+.details h1{
+    text-transform:capitalize;
+    color: rgb(151, 7, 247);;
+}
+#rate span{
+    color: orange;
+}
+.details h5 span{
+    color: rgb(6, 199, 6);
+}
+.details{ 
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+ }
+ .des h3{
+    text-transform: capitalize;
+    text-align:left;
+    overflow-wrap:break-word;
+    color:rgb(151, 7, 247);
+ }
+#card{
+    margin: 15px auto;
+    box-shadow: 0 4px 8px 0 rgba(240, 56, 117, 0.2),0 6px 20px 0 rgba(0, 0,0, 0.19);
+}
+button span{
+    margin-right: 5px;
+}

@@ -1,0 +1,83 @@
+<h1>Cart list</h1>
+<div class="container-fluid" *ngIf="productList.length != 0">
+<div class="row">
+    <div class="col-sm-9">
+        <div class="product-list">
+            <div class="table-responsive">
+            <table class="table table-striped table-borderless">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Rating</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Delete</th>
+        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of productList">
+                        <td id="pad"><img src="{{item.images[0]}}"/></td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.rating}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.description}}</td>
+                        <td (click)="deleteitem(item)" class="deletetrash"><fa-icon [icon]="icon"></fa-icon></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 check">
+        <h3>Amount:<span>${{totalAmount}}</span></h3>
+        <h3>Tax:<span>${{taxAmount|number:'1.0-0'}}</span></h3>
+        <h3>Discount of 10%:<span>${{Discount|number:'1.0-0'}}</span></h3>
+        <h2>Total Amount:<span>${{finalAmount|number:'1.0-0'}}</span></h2>
+        <button (click)="this.addressform=true" class="btn btn-primary">Checkout</button>
+        <button (click)="emptycart()" class="btn btn-warning">Empty cart</button>
+        <div *ngIf="addressform">
+            <form #checkout="ngForm" (ngSubmit)="checkOut(checkout.value)" class="flexible">
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="floatingInput" type="text" name="name" placeholder="name@example.com" ngModel/>
+                    <label for="floatingInput">Enter the Name</label>
+                    </div>
+                <div class="form-floating mb-3">
+                    <input  class="form-control" id="floatingInput" type="email" placeholder="name@example.com"  name="email" #email="ngModel" email required ngModel/>
+                    <label for="floatingInput">Email address</label>
+                    <p class="invalid-input" *ngIf="email.invalid && email.touched && email.errors?.['required']">Please Enter the email</p>
+                    <p class="invalid-input" *ngIf="email.errors?.['email']">Please Enter the Valid emailId</p>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="floatingInput" type="text" name="mobile" placeholder="name@example.com" #phone="ngModel" required ngModel/>
+                    <label for="floatingInput">MobileNumber</label>
+                    <p class="invalid-input" *ngIf="phone.invalid && phone.touched && phone.errors?.['required']">Please Enter the MobileNumber</p>
+                    </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="floatingInput" type="text" name="address" placeholder="name@example.com" #address="ngModel" required ngModel/>
+                    <label for="floatingInput">Address</label>
+                    <p class="invalid-input" *ngIf="address.invalid && address.touched && address.errors?.['required']">Please Enter the Address Detail</p>
+                    </div>
+                <button [disabled]="checkout.invalid" type="submit" class="btn btn-success">Order</button>
+                <button (click)="cancel()" class="btn btn-secondary">Cancel</button>
+              </form>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<ng-container *ngIf="productList.length == 0">
+    <div class="card">
+        <div class="center">
+            <img class="img1" src="https://static9.depositphotos.com/1431107/1135/i/450/depositphotos_11359051-stock-photo-sorry-emoticon.jpg" alt="">
+            <h4>Your cart is Empty</h4>
+            <h6>Please add Items</h6>
+            <button routerLink="" class="btn btn-dark">Shop Now</button>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,16 @@
+<nav class="nav">
+    <div class="container nav-head">
+        <div>
+    <h1><a routerLink="">E-COMM</a></h1>
+</div>
+    <div class="toggle">
+    <fa-icon class="fa-2x" (click)="toggleNav()" style="color:rgb(15, 15, 15);"  [icon]="currentIcon"></fa-icon>
+    </div>
+    <div class="nav-links" [class.menuclass]="menuvar">
+    <ul>
+        <li><a routerLink="">Home</a></li>
+        <li><a routerLink="cart-page"><span><fa-icon [icon]="cart"></fa-icon></span>Cart({{cartitems}})</a></li>
+    </ul>
+    </div>
+    </div>
+  </nav>
